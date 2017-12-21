@@ -85,6 +85,7 @@ moz_logging
 moz_pioneer
 moz_security
 moz_telemetry
+mqttc
 openssl
 parquet
 postgres
