@@ -75,6 +75,8 @@ bloom_filter
 circular_buffer
 cjson
 compat
+copas
+coxpcall
 cuckoo_filter
 elasticsearch
 gcp
