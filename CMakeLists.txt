@@ -88,6 +88,7 @@ irc
 jose
 kafka
 libinjection
+libmodbus
 lfs
 lpeg
 lsb
