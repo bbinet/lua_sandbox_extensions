@@ -93,6 +93,7 @@ lfs
 lpeg
 lsb
 maxminddb
+mosquitto
 moz_ingest
 moz_logging
 moz_pioneer
