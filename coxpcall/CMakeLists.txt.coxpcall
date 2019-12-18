@@ -1,0 +1,37 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+project(coxpcall VERSION 1.17.0 LANGUAGES C)
+
+set(CPACK_PACKAGE_NAME luasandbox-${PROJECT_NAME})
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Lua Coxpcall Modules")
+set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+set(CPACK_PACKAGE_VENDOR        "HeliosLite")
+set(CPACK_PACKAGE_CONTACT       "Bruno Binet <bruno.binet@helioslite.com>")
+set(CPACK_OUTPUT_CONFIG_FILE    "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.cpack")
+set(CPACK_STRIP_FILES           TRUE)
+set(CPACK_DEBIAN_FILE_NAME      "DEB-DEFAULT")
+set(CPACK_RPM_FILE_NAME         "RPM-DEFAULT")
+
+set(CPACK_RPM_PACKAGE_LICENSE    "MIT License")
+
+if(LUA51) # build against installed lua 5.1
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "lua5.1")
+    set(CPACK_PACKAGE_NAME lua51-${PROJECT_NAME})
+    find_package(Lua51)
+    find_program(LUA NAMES lua lua.bat)
+else() # lua_sandbox build
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "luasandbox (>= 1.0.2)")
+    string(REGEX REPLACE "[()]" "" CPACK_RPM_PACKAGE_REQUIRES ${CPACK_DEBIAN_PACKAGE_DEPENDS})
+    find_package(luasandbox 1.0.2 REQUIRED CONFIG)
+endif()
+
+include(CPack)
+
+set(DPERMISSION DIRECTORY_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+
+install(FILES  src/coxpcall.lua DESTINATION ${INSTALL_IOMODULE_PATH})

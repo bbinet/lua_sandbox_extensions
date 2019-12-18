@@ -75,6 +75,8 @@ bloom_filter
 circular_buffer
 cjson
 compat
+copas
+coxpcall
 cuckoo_filter
 elasticsearch
 gcp
@@ -87,10 +89,12 @@ irc
 jose
 kafka
 libinjection
+libmodbus
 lfs
 lpeg
 lsb
 maxminddb
+mosquitto
 moz_ingest
 moz_logging
 moz_pioneer
