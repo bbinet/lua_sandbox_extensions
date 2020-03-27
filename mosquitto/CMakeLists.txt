@@ -8,7 +8,7 @@ project(mosquitto LANGUAGES NONE)
 externalproject_add(
     ep_mosquitto
     GIT_REPOSITORY https://github.com/helioslite/lua-mosquitto.git
-    GIT_TAG d38b903a8c761b25595a5e0c595b725a5060be0e
+    GIT_TAG ebca9cc91575ba6daed8ade632e77e2f19a2ed4d
     CMAKE_ARGS ${EP_CMAKE_ARGS} -DPARENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
     UPDATE_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.${PROJECT_NAME} <SOURCE_DIR>/CMakeLists.txt
 )
